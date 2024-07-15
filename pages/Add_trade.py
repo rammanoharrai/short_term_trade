@@ -18,6 +18,10 @@ for list in column_list:
         st.text_input(list,key=list)
     else:
         st.date_input(list,key=list)
-st.button(label='Add the trade',on_click=add_data)
+st.button(label='Add the trade',on_click=add_data,key='Record Added')
+if(st.session_state['Record Added']==True):
+    st.text('Record has been added')
+    st.rerun()
+
 
 

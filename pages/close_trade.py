@@ -15,8 +15,11 @@ st.header('This is to close the trade')
 
 column_list=['ID','Sold Date','Sold Price']
 for list in column_list:
-    if list != 'Date Initiated':
+    if list != 'Sold Date':
         st.text_input(list,key=list)
     else:
         st.date_input(list, key=list)
-st.button(label='Add the trade',on_click=close_trade)
+st.button(label='Close open position',on_click=close_trade,key='position_close')
+if st.session_state['position_close']==True:
+    st.text('Position Closed')
+    st.rerun()

@@ -58,7 +58,7 @@ class Connection:
     def delete(self,id):
         cursor=self.connection.cursor()
         query="""DELETE FROM TRADE_INFO WHERE id=?"""
-        cursor.execute(query,id)
+        cursor.execute(query,(id,))
         cursor.close()
         self.connection.commit()
         
@@ -96,7 +96,7 @@ class price_extract:
             current_price=soup.find(class_=class1).text
             return current_price
         except:
-            return Null
+            return '₹ 0'
 
 class Email_communication:
     def __init__(self):
